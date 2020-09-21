@@ -2,7 +2,7 @@
 import os
 
 
-ROOT_DATASET = '/app/dataset/dataset/'
+ROOT_DATASET = 'D:\\dataset\\'
 
 
 def return_ucf101(modality):

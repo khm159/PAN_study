@@ -187,6 +187,7 @@ class PANDataSet(data.Dataset):
         elif self.image_tmpl == '{:06d}-{}_{:05d}.jpg':
             file_name = self.image_tmpl.format(int(record.path), 'x', 1)
             full_path = os.path.join(self.root_path, '{:06d}'.format(int(record.path)), file_name)
+            print(full_path)
         else:
             file_name = self.image_tmpl.format(1)
             full_path = os.path.join(self.root_path, record.path, file_name)
