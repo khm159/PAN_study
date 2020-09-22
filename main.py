@@ -25,7 +25,6 @@ from tensorboardX import SummaryWriter
 best_prec1 = 0
 
 def main():
-    
     global args, best_prec1
     args = parser.parse_args()
 
@@ -223,7 +222,9 @@ def main():
 
         # evaluate on validation set
         if (epoch + 1) % args.eval_freq == 0 or epoch == args.epochs - 1:
+            ## index 에러 발생
             prec1 = validate(val_loader, model, criterion, epoch, log_training, tf_writer)
+
 
             # remember best prec@1 and save checkpoint
             is_best = prec1 > best_prec1
@@ -337,8 +338,12 @@ def validate(val_loader, model, criterion, epoch, log=None, tf_writer=None):
     model.eval()
 
     end = time.time()
+    #validation 코드에서 오류발생?? out of index??
     with torch.no_grad():
         for i, (input, target) in enumerate(val_loader):
+            ## next에서 터짐
+            ## returen self._process_next_batch(batch)
+            
             target = target.cuda()
 
             # compute output

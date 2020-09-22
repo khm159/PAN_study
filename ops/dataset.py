@@ -120,7 +120,6 @@ class PANDataSet(data.Dataset):
 
     def _sample_indices(self, record):
         """
-
         :param record: VideoRecord
         :return: list
         """
