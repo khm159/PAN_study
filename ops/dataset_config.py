@@ -2,7 +2,7 @@
 import os
 
 
-ROOT_DATASET = 'D:\\dataset\\'
+ROOT_DATASET = 'D:/dataset/'
 
 
 def return_ucf101(modality):
@@ -21,6 +21,17 @@ def return_ucf101(modality):
         raise NotImplementedError('no such modality:' + modality)
     return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
 
+def return_jester(modality):
+    filename_categories = 27
+    if modality in ['RGB', 'PA', 'Lite']:
+        prefix = '{:05d}.jpg'
+        root_data = ROOT_DATASET + '/20bn-jester-v1'
+        filename_imglist_train = '/dataset/20bn-jester-v1/jester-train.txt'
+        filename_imglist_val = '/dataset/20bn-jester-v1/jester-val.txt'
+    else:
+        raise NotImplementedError('no such modality:'+modality)
+    return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
+
 def ETRI_Activity3D(modality):
     filename_categories = 55 
     if modality in ['RGB']: 
@@ -31,9 +42,6 @@ def ETRI_Activity3D(modality):
     else:
         raise NotImplementedError('no such modality:' + modality)
     return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
-
-
-
 
 def return_hmdb51(modality):
     filename_categories = 51
@@ -50,6 +58,7 @@ def return_hmdb51(modality):
     else:
         raise NotImplementedError('no such modality:' + modality)
     return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
+
 
 
 def return_something(modality):
@@ -82,18 +91,6 @@ def return_somethingv2(modality):
         filename_imglist_train = 'something/v2/train_videofolder_flow.txt'
         filename_imglist_val = 'something/v2/val_videofolder_flow.txt'
         prefix = '{:06d}.jpg'
-    else:
-        raise NotImplementedError('no such modality:'+modality)
-    return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
-
-
-def return_jester(modality):
-    filename_categories = 27
-    if modality in ['RGB', 'PA', 'Lite']:
-        prefix = '{:05d}.jpg'
-        root_data = ROOT_DATASET + 'jester_frames'
-        filename_imglist_train = '/data/zhangcan/file_lists/jester/split/train.txt'
-        filename_imglist_val = '/data/zhangcan/file_lists/jester/split/val.txt'
     else:
         raise NotImplementedError('no such modality:'+modality)
     return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
